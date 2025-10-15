@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login - MCU</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="marvel2.css">
+  <style>
+    body {
+      background-color: #eae4e4c5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url("avengers wallpaper.jpg");
+      background-size: cover;
+    }
+    h2 { margin-bottom: 1px; color: white; }
+    input { margin-bottom: 0px; }
+    button { width: 100%; }
+    a { color: #e23d0f; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .login-container { max-width: 350px; width: 100%; background: rgba(0,0,0,0.5); padding: 20px; border-radius: 10px; }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login to MCU</h2>
+    <form id="login-form">
+      <div class="mb-3">
+        <label for="username" class="form-label text-white">Username</label>
+        <input type="text" class="form-control input-field" id="username" placeholder="Enter Username" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label text-white">Password</label>
+        <input type="password" class="form-control input-field" id="password" placeholder="Enter Password" required>
+      </div>
+      <button type="submit" class="btn btn-warning btn-login">Login</button>
+    </form>
+    <div class="text-footer mt-2">
+      <p class="text-white">Don't have an account? <a href="signup.html">Sign up</a></p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("login-form").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      try {
+        const response = await fetch("http://localhost:5000/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password })
+        });
+
+        const result = await response.json();
+        alert(result.message);
+        if(response.ok) window.location.href = "web2.html";
+      } catch (err) {
+        console.error(err);
+        alert("An error occurred. Please try again.");
+      }
+    });
+  </script>
+</body>
+</html>
