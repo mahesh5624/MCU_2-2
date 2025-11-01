@@ -1,81 +1,89 @@
-// server.js
-const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-const path = require("path");
+// --------------------------------------------
+// MCU Website Backend (Render Deployment)
+// --------------------------------------------
+import express from "express";
+import mongoose from "mongoose";
+import path from "path";
+import dotenv from "dotenv";
+import { fileURLToPath } from "url";
+import bodyParser from "body-parser";
+import cors from "cors";
+
+dotenv.config();
 
 const app = express();
 
-// ----------------------------
+// --------------------------------------------
 // Middleware
-// ----------------------------
+// --------------------------------------------
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "public"))); // Serve static frontend files
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// ----------------------------
-// MongoDB Atlas connection
-// ----------------------------
-mongoose.connect(
-  "mongodb+srv://maheshkorra220418_db_user:mahesh5624@cluster0.qy27dgh.mongodb.net/mcu2-2?retryWrites=true&w=majority",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-)
-.then(() => console.log("✅ Connected to MongoDB Atlas"))
-.catch((err) => console.error("❌ MongoDB connection error:", err));
+// --------------------------------------------
+// Path setup
+// --------------------------------------------
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-// ----------------------------
-// Contact Schema
-// ----------------------------
+// --------------------------------------------
+// Static files
+// --------------------------------------------
+app.use(express.static(path.join(__dirname, "public")));
+
+// --------------------------------------------
+// MongoDB connection
+// --------------------------------------------
+const MONGO_URI = process.env.MONGO_URI || "your-mongodb-uri-here";
+
+mongoose
+  .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("✅ Connected to MongoDB Atlas"))
+  .catch((err) => console.error("❌ MongoDB Connection Error:", err));
+
+// --------------------------------------------
+// Mongoose Schema (Example: contact form or feedback)
+// --------------------------------------------
 const contactSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true },
-  message: { type: String, required: true },
-  submittedAt: { type: Date, default: Date.now },
+  name: String,
+  email: String,
+  message: String,
+  date: { type: Date, default: Date.now },
 });
+
 const Contact = mongoose.model("Contact", contactSchema);
 
-// ----------------------------
-// Contact Form Submission
-// ----------------------------
-app.post("/submit_form", async (req, res) => {
-  const { name, email, message } = req.body;
+// --------------------------------------------
+// Routes
+// --------------------------------------------
 
-  if (!name || !email || !message) {
-    return res.status(400).json({ message: "All fields are required." });
-  }
-
-  try {
-    const newContact = new Contact({ name, email, message });
-    await newContact.save();
-    res.status(200).json({ message: "Thank you for your message!" });
-  } catch (error) {
-    console.error("Error saving contact form:", error);
-    res
-      .status(500)
-      .json({ message: "Failed to save your message. Please try again later." });
-  }
-});
-
-// ----------------------------
-// Serve Frontend
-// ----------------------------
-
-// Serve main web2.html for root
+// Root → Serve web2.html as main page
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "web2.html"));
 });
 
-// Fallback — for any undefined routes, show main site
-app.get("*", (req, res) => {
+// API route for contact form submissions (if used)
+app.post("/contact", async (req, res) => {
+  try {
+    const { name, email, message } = req.body;
+    const newEntry = new Contact({ name, email, message });
+    await newEntry.save();
+    res.status(200).json({ success: true, message: "Message saved!" });
+  } catch (err) {
+    res.status(500).json({ success: false, message: "Error saving message" });
+  }
+});
+
+// --------------------------------------------
+// Fallback for all other routes → serve web2.html
+// (Fixed for Express 5+ — uses "/*" not "*")
+// --------------------------------------------
+app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "web2.html"));
 });
 
-// ----------------------------
-// Start Server
-// ----------------------------
-const PORT = process.env.PORT || 5000;
+// --------------------------------------------
+// Start server
+// --------------------------------------------
+const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
