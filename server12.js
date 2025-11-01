@@ -1,6 +1,3 @@
-// --------------------------------------------
-// MCU Website Backend (Render Deployment)
-// --------------------------------------------
 import express from "express";
 import mongoose from "mongoose";
 import path from "path";
@@ -42,7 +39,7 @@ mongoose
   .catch((err) => console.error("❌ MongoDB Connection Error:", err));
 
 // --------------------------------------------
-// Mongoose Schema (Example: contact form or feedback)
+// Schema example (optional contact form)
 // --------------------------------------------
 const contactSchema = new mongoose.Schema({
   name: String,
@@ -56,29 +53,23 @@ const Contact = mongoose.model("Contact", contactSchema);
 // --------------------------------------------
 // Routes
 // --------------------------------------------
-
-// Root → Serve web2.html as main page
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "web2.html"));
 });
 
-// API route for contact form submissions (if used)
 app.post("/contact", async (req, res) => {
   try {
     const { name, email, message } = req.body;
-    const newEntry = new Contact({ name, email, message });
-    await newEntry.save();
+    const newContact = new Contact({ name, email, message });
+    await newContact.save();
     res.status(200).json({ success: true, message: "Message saved!" });
   } catch (err) {
     res.status(500).json({ success: false, message: "Error saving message" });
   }
 });
 
-// --------------------------------------------
-// Fallback for all other routes → serve web2.html
-// (Fixed for Express 5+ — uses "/*" not "*")
-// --------------------------------------------
-app.get("/*", (req, res) => {
+// ✅ Fallback route (works on Express 5+)
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, "public", "web2.html"));
 });
 
