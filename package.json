@@ -1,6 +1,7 @@
 {
   "name": "website.html",
   "version": "1.0.0",
+  "type": "module",
   "main": "server12.js",
   "scripts": {
     "start": "node server12.js"
