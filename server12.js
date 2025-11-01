@@ -7,7 +7,6 @@ import bodyParser from "body-parser";
 import cors from "cors";
 
 dotenv.config();
-
 const app = express();
 
 // --------------------------------------------
@@ -31,7 +30,9 @@ app.use(express.static(path.join(__dirname, "public")));
 // --------------------------------------------
 // MongoDB connection
 // --------------------------------------------
-const MONGO_URI = process.env.MONGO_URI || "your-mongodb-uri-here";
+const MONGO_URI =
+  process.env.MONGO_URI ||
+  "mongodb+srv://maheshkorra220418_db_user:mahesh5624@cluster0.qy27dgh.mongodb.net/mcu2-2?retryWrites=true&w=majority";
 
 mongoose
   .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -68,7 +69,7 @@ app.post("/contact", async (req, res) => {
   }
 });
 
-// ✅ Fallback route (works on Express 5+)
+// ✅ Fallback route (for any unmatched path)
 app.use((req, res) => {
   res.sendFile(path.join(__dirname, "public", "web2.html"));
 });
