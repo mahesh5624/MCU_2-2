@@ -1,8 +1,8 @@
 {
   "name": "website.html",
   "version": "1.0.0",
-  "type": "module",
   "main": "server12.js",
+  "type": "module",
   "scripts": {
     "start": "node server12.js"
   },
@@ -11,7 +11,6 @@
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^5.1.0",
-    "mongoose": "^7.3.4",
-    "path-to-regexp": "^8.3.0"
+    "mongoose": "8.5.0"
   }
 }
