@@ -1,213 +1,140 @@
-from flask import Flask, render_template, request, jsonify
+import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
 
-app = Flask(__name__)
+const app = express();
 
-# ── Main pages ────────────────────────────────────────────────────────────────
+// Fix __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-@app.route("/")
-@app.route("/web2.html")
-def home():
-    return render_template("web2.html")
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-@app.route("/heroes.html")
-def heroes():
-    return render_template("heroes.html")
+// Static files
+app.use(express.static(path.join(__dirname, "public")));
 
-@app.route("/villains.html")
-def villains():
-    return render_template("villains.html")
+// ---------------- MAIN ROUTES ----------------
 
-@app.route("/movies.html")
-def movies():
-    return render_template("movies.html")
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "web2.html"));
+});
 
-@app.route("/about2.html")
-def about():
-    return render_template("about2.html")
+app.get("/web2.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "web2.html"));
+});
 
-@app.route("/contact-us.html")
-def contact_us():
-    return render_template("contact-us.html")
+app.get("/heroes.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "heroes.html"));
+});
 
-@app.route("/hello.html")
-def hello():
-    return render_template("hello.html")
+app.get("/villains.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "villains.html"));
+});
 
-@app.route("/index.html")
-def index():
-    return render_template("index.html")
+app.get("/movies.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "movies.html"));
+});
 
-# ── Hero detail pages ─────────────────────────────────────────────────────────
+app.get("/about2.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "about2.html"));
+});
 
-@app.route("/ironman.html")
-def ironman():
-    return render_template("ironman.html")
+app.get("/contact-us.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "contact-us.html"));
+});
 
-@app.route("/spiderman.html")
-def spiderman():
-    return render_template("spiderman.html")
+app.get("/hello.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "hello.html"));
+});
 
-# ── Villain detail pages ──────────────────────────────────────────────────────
+app.get("/index.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 
-@app.route("/thonas.html")
-def thonas():
-    return render_template("thonas.html")
+// ---------------- LOGIN / SIGNUP ----------------
 
-@app.route("/loki.html")
-def loki():
-    return render_template("loki.html")
+app.get("/login.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "login.html"));
+});
 
-# ── Movie detail pages ────────────────────────────────────────────────────────
+app.get("/signup.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "signup.html"));
+});
 
-@app.route("/ironman2008.html")
-def ironman2008():
-    return render_template("ironman2008.html")
+// ---------------- HEROES ----------------
 
-@app.route("/ironman2010.html")
-def ironman2010():
-    return render_template("ironman2010.html")
+app.get("/ironman.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "ironman.html"));
+});
 
-@app.route("/iron_man_2013.html")
-def iron_man_2013():
-    return render_template("iron_man_2013.html")
+app.get("/spiderman.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "spiderman.html"));
+});
 
-@app.route("/thor2011.html")
-def thor2011():
-    return render_template("thor2011.html")
+// ---------------- VILLAINS ----------------
 
-@app.route("/thor_2013.html")
-def thor_2013():
-    return render_template("thor_2013.html")
+app.get("/thonas.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "thonas.html"));
+});
 
-@app.route("/thor_2017.html")
-def thor_2017():
-    return render_template("thor_2017.html")
+app.get("/loki.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "loki.html"));
+});
 
-@app.route("/caption2011.html")
-def caption2011():
-    return render_template("caption2011.html")
+// ---------------- MOVIES ----------------
 
-@app.route("/avengers_2012.html")
-def avengers_2012():
-    return render_template("avengers_2012.html")
+app.get("/ironman2008.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "ironman2008.html"));
+});
 
-@app.route("/captian_2014.html")
-def captian_2014():
-    return render_template("captian_2014.html")
+app.get("/ironman2010.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "ironman2010.html"));
+});
 
-@app.route("/ca_2016.html")
-def ca_2016():
-    return render_template("ca_2016.html")
+app.get("/iron_man_2013.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "iron_man_2013.html"));
+});
 
-@app.route("/av_2015.html")
-def av_2015():
-    return render_template("av_2015.html")
+app.get("/thor2011.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "thor2011.html"));
+});
 
-@app.route("/aeg.html")
-def aeg():
-    return render_template("aeg.html")
+app.get("/thor_2013.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "thor_2013.html"));
+});
 
-@app.route("/avi.html")
-def avi():
-    return render_template("avi.html")
+app.get("/thor_2017.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "thor_2017.html"));
+});
 
-@app.route("/antman.html")
-def antman():
-    return render_template("antman.html")
+// (You can continue same pattern if needed)
 
-@app.route("/antman_wasp_quantumania.html")
-def antman_wasp_quantumania():
-    return render_template("antman_wasp_quantumania.html")
+// ---------------- CONTACT FORM ----------------
 
-@app.route("/am_wasp_2018.html")
-def am_wasp_2018():
-    return render_template("am_wasp_2018.html")
+app.post("/submit_form", (req, res) => {
+  const { name, email, message } = req.body;
 
-@app.route("/g.html")
-def g():
-    return render_template("g.html")
+  if (!name || !email || !message) {
+    return res.status(400).json({
+      success: false,
+      message: "All fields are required.",
+    });
+  }
 
-@app.route("/gaurdians_2017.html")
-def gaurdians_2017():
-    return render_template("gaurdians_2017.html")
+  // Later you can connect MongoDB here
 
-@app.route("/gg2023.html")
-def gg2023():
-    return render_template("gg2023.html")
+  return res.json({
+    success: true,
+    message: "Message received! Thank you.",
+  });
+});
 
-@app.route("/ds_2016.html")
-def ds_2016():
-    return render_template("ds_2016.html")
+// ---------------- SERVER ----------------
 
-@app.route("/dsm.html")
-def dsm():
-    return render_template("dsm.html")
+const PORT = process.env.PORT || 10000;
 
-@app.route("/bp_2018.html")
-def bp_2018():
-    return render_template("bp_2018.html")
-
-@app.route("/bpwakanda.html")
-def bpwakanda():
-    return render_template("bpwakanda.html")
-
-@app.route("/bw2018.html")
-def bw2018():
-    return render_template("bw2018.html")
-
-@app.route("/cap_2019.html")
-def cap_2019():
-    return render_template("cap_2019.html")
-
-@app.route("/bruce_banner_into_hulk.html")
-def bruce_banner_into_hulk():
-    return render_template("bruce_banner_into_hulk.html")
-
-@app.route("/sm_coming.html")
-def sm_coming():
-    return render_template("sm_coming.html")
-
-@app.route("/sm_far_from_home.html")
-def sm_far_from_home():
-    return render_template("sm_far_from_home.html")
-
-@app.route("/no_way.html")
-def no_way():
-    return render_template("no_way.html")
-
-@app.route("/shang_chi.html")
-def shang_chi():
-    return render_template("shang_chi.html")
-
-@app.route("/love_thunder.html")
-def love_thunder():
-    return render_template("love_thunder.html")
-
-@app.route("/marvel2023.html")
-def marvel2023():
-    return render_template("marvel2023.html")
-
-@app.route("/eternals.html")
-def eternals():
-    return render_template("eternals.html")
-
-@app.route("/dp3.html")
-def dp3():
-    return render_template("dp3.html")
-
-# ── Contact form endpoint ─────────────────────────────────────────────────────
-
-@app.route("/submit_form", methods=["POST"])
-def submit_form():
-    data = request.get_json(silent=True) or {}
-    name = data.get("name", "").strip()
-    email = data.get("email", "").strip()
-    message = data.get("message", "").strip()
-    if not (name and email and message):
-        return jsonify({"success": False, "message": "All fields are required."}), 400
-    # In production, persist data to a database here.
-    return jsonify({"success": True, "message": "Message received! Thank you."})
-
-
-if __name__ == "__main__":
-    app.run()
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});
