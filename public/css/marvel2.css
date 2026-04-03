@@ -1,3 +1,4 @@
+/* ================= BACKGROUND ================= */
 .main {
     background-image: url("https://38.media.tumblr.com/5f61bbe9322e3d56c6f2bb038bcd57e2/tumblr_nby5s456W31skiebmo1_400.gif");
     background-size: cover;
@@ -5,106 +6,93 @@
     width: 100vw;
 }
 
+/* ================= BODY ================= */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* ================= HEADER ================= */
 header {
     background-color: #333;
     color: #fff;
     text-align: center;
-    padding: 1rem 0;
+    padding: 15px;
 }
 
+/* ================= NAVBAR ================= */
 nav {
     background-color: #444;
-    text-align: center;
-    padding: 1rem;
 }
 
 nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
     list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 15px;
+    padding: 10px;
+    margin: 0;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
     font-size: 18px;
+    padding: 5px 10px;
 }
 
+nav ul li a:hover {
+    background-color: red;
+    border-radius: 5px;
+}
+
+/* ================= SECTION (CENTER FIX) ================= */
 .section {
-    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    padding: 30px;
     text-align: center;
 }
 
+/* ================= CARD ================= */
 .card {
-    display: inline-block;
-    width: 200px;
-    height: 300px;
-    /* Set fixed height for the card */
-    margin: 1rem;
+    width: 220px;
+    height: 320px;
     background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    padding: 1rem;
+    border-radius: 12px;
+    padding: 10px;
     text-align: center;
-    overflow: hidden;
-    /* Hide any overflowed content */
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
 }
 
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* ================= IMAGE FIX ================= */
 .card img {
     width: 100%;
-    /* Make the image fill the card width */
     height: 200px;
-    /* Fixed height for the image */
     object-fit: cover;
-    /* Ensure the image covers the fixed area without stretching */
-    border-radius: 8px;
-    /* Rounded corners for the image */
+    border-radius: 10px;
 }
 
+/* ================= FOOTER ================= */
 footer {
     background-color: #333;
-    color: #fff;
+    color: white;
     text-align: center;
-    padding: 20px;
-    position: fixed;
-    bottom: 0%;
-    width: 100%;
+    padding: 15px;
+    margin-top: 30px;
 }
 
-
-/*.card {
-    display: inline-block;
-    width: 200px;
-    margin: 1rem;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    padding: 1rem;
-    text-align: center;
-}
-
-.card img {
-    width: 140px;
-    height: 180px;
-    border-radius: 8px;
-}
-
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-    position: fixed;
-    bottom: 0%;
-    width: 100%;
-}*/
+/* ================= TEXT ================= */
 .class1 {
     position: relative;
-
 }
 
 #login {
@@ -113,13 +101,16 @@ footer {
 
 .phase {
     color: #005ce6;
+    text-align: center;
+    width: 100%;
+    font-size: 22px;
 }
 
 .class2 {
-    color: #f3f2f2f8;
-    font-size: 30px;
-    font-weight: 50px;
-
+    color: #ffffff;
+    font-size: 28px;
+    text-align: center;
+    width: 100%;
 }
 
 .class3 {
@@ -127,9 +118,10 @@ footer {
 }
 
 .class4 {
-    color: #0c0b0c
+    color: #0c0b0c;
 }
 
+/* ================= HOVER EFFECT ================= */
 .feature:hover {
-    transform: scale(1.10);
+    transform: scale(1.1);
 }
