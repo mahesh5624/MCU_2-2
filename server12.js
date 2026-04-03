@@ -19,11 +19,17 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 // ---------------- MONGODB CONNECTION ----------------
+mongoose.set("strictQuery", false);
+
 const MONGO_URI = "mongodb+srv://admin:admin123@cluster0.vjwxtdc.mongodb.net/mcu_website?retryWrites=true&w=majority";
 
-mongoose.connect(MONGO_URI)
-  .then(() => console.log("✅ MongoDB Connected"))
-  .catch(err => console.log("❌ MongoDB Error:", err));
+mongoose.connect(MONGO_URI, {
+  serverSelectionTimeoutMS: 5000
+})
+.then(() => console.log("✅ MongoDB Connected"))
+.catch(err => {
+  console.log("❌ MongoDB Failed but server will run:", err.message);
+});
 
 // ---------------- SCHEMA ----------------
 const contactSchema = new mongoose.Schema({
@@ -37,12 +43,12 @@ const Contact = mongoose.model("Contact", contactSchema);
 
 // ---------------- ROUTES ----------------
 
-// Home
+// Home page
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "web2.html"));
 });
 
-// Contact Form API
+// Contact form API
 app.post("/contact", async (req, res) => {
   try {
     const { name, email, message } = req.body;
