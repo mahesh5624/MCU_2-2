@@ -9,48 +9,75 @@
     <link rel="stylesheet" href="/css/marvel2.css">
 
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
         section {
             background-image: url("/images/heroes_background.webp");
             background-repeat: no-repeat;
             background-size: cover;
             padding: 40px;
+            text-align: center;
         }
 
         header {
             background-color: red;
             text-align: center;
-            padding: 10px;
+            padding: 15px;
+            color: white;
         }
 
         nav ul {
             display: flex;
             justify-content: center;
             list-style: none;
+            background-color: #444;
+            padding: 10px;
+            margin: 0;
+            gap: 30px;
         }
 
-        nav ul li {
-            margin: 0 15px;
+        nav ul li a {
+            color: white;
+            text-decoration: none;
         }
 
+        /* 🔥 FIXED CENTER CONTAINER */
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        /* 🔥 CARD DESIGN */
         .card {
-            display: inline-block;
-            margin: 20px;
-            padding: 15px;
             background: white;
-            border-radius: 10px;
-            width: 200px;
+            border-radius: 12px;
+            width: 220px;
+            padding: 15px;
             text-align: center;
             transition: 0.3s;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
         }
 
         .card:hover {
             transform: scale(1.05);
         }
 
+        /* 🔥 IMAGE FIX */
         .card img {
             width: 100%;
             height: 200px;
             object-fit: cover;
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: white;
         }
     </style>
 </head>
@@ -77,24 +104,27 @@
 
     <!-- HEROES -->
     <section>
-        <h2 class="class2">Heroes</h2>
+        <h2>Heroes</h2>
 
-        <div class="card">
-            <a href="/ironman.html">
-                <img src="/images/iron_man.jpg" alt="Iron Man">
-                <h3>Iron Man</h3>
-            </a>
-            <p>The genius philanthropist in a high-tech suit.</p>
+        <div class="cards-container">
+
+            <div class="card">
+                <a href="/ironman.html">
+                    <img src="/images/iron_man.jpg" alt="Iron Man">
+                    <h3>Iron Man</h3>
+                </a>
+                <p>The genius philanthropist in a high-tech suit.</p>
+            </div>
+
+            <div class="card">
+                <a href="/spiderman.html">
+                    <img src="/images/spider_man.jpg" alt="Spider-Man">
+                    <h3>Spider-Man</h3>
+                </a>
+                <p>The friendly neighbourhood superhero.</p>
+            </div>
+
         </div>
-
-        <div class="card">
-            <a href="/spiderman.html">
-                <img src="/images/spider_man.jpg" alt="Spider-Man">
-                <h3>Spider-Man</h3>
-            </a>
-            <p>The friendly neighbourhood superhero.</p>
-        </div>
-
     </section>
 
 </body>
