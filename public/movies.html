@@ -1,123 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marvel Movies</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marvel Movies</title>
 
-    <link rel="stylesheet" href="/css/marvel2.css">
+<link rel="stylesheet" href="/css/marvel2.css">
 
-    <style>
-        section {
-            background-color: #111;
-            color: white;
-            padding: 40px;
-        }
+<style>
+header { background:red; text-align:center; padding:10px; }
 
-        header {
-            background-color: red;
-            text-align: center;
-            padding: 10px;
-        }
+nav ul { display:flex; justify-content:center; list-style:none; }
+nav ul li { margin:0 15px; }
 
-        nav ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-        }
+.card {
+    display:inline-block;
+    width:200px;
+    margin:10px;
+    background:white;
+    padding:10px;
+    border-radius:10px;
+    text-align:center;
+}
 
-        nav ul li {
-            margin: 0 15px;
-        }
-
-        .card {
-            display: inline-block;
-            margin: 15px;
-            padding: 10px;
-            background: white;
-            color: black;
-            border-radius: 10px;
-            width: 200px;
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: scale(1.05);
-        }
-
-        .card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-    </style>
+.card img {
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-    <h1>Marvel Cinematic Universe Movies</h1>
+<h1>Marvel Cinematic Universe Movies</h1>
 </header>
 
 <nav>
-    <ul>
-        <li><a href="/web2.html">Home</a></li>
-        <li><a href="/heroes.html">Heroes</a></li>
-        <li><a href="/villains.html">Villains</a></li>
-        <li><a href="/movies.html">Movies</a></li>
-        <li><a href="/about2.html">About</a></li>
-        <li><a href="/contact-us.html">Contact Us</a></li>
-    </ul>
+<ul>
+<li><a href="/web2.html">Home</a></li>
+<li><a href="/heroes.html">Heroes</a></li>
+<li><a href="/villains.html">Villains</a></li>
+<li><a href="/movies.html">Movies</a></li>
+<li><a href="/about2.html">About</a></li>
+<li><a href="/contact-us.html">Contact</a></li>
+</ul>
 </nav>
 
 <section>
 
-<h2>MCU Movies</h2>
+<h2>Phase 1</h2>
 
-<!-- Example cards (pattern) -->
+<div class="card"><a href="/ironman2008.html"><img src="https://cdn.marvel.com/content/1x/ironman_lob_crd_01_3.jpg"><h3>Iron Man (2008)</h3></a></div>
+<div class="card"><a href="/bruce%20banner%20into%20hulk.html"><img src="https://cdn.marvel.com/content/1x/theincrediblehulk_lob_crd_03.jpg"><h3>Hulk (2008)</h3></a></div>
+<div class="card"><a href="/ironman2010.html"><img src="https://cdn.marvel.com/content/1x/ironman2_lob_crd_01_3.jpg"><h3>Iron Man 2 (2010)</h3></a></div>
+<div class="card"><a href="/thor2011.html"><img src="https://cdn.marvel.com/content/1x/thor_lob_crd_01.jpg"><h3>Thor (2011)</h3></a></div>
+<div class="card"><a href="/caption2011.html"><img src="https://cdn.marvel.com/content/1x/captainamerica_lob_crd_01.jpg"><h3>Captain America (2011)</h3></a></div>
+<div class="card"><a href="/avengers%202012.html"><img src="https://cdn.marvel.com/content/1x/theavengers_lob_crd_03.jpg"><h3>The Avengers (2012)</h3></a></div>
 
-<div class="card">
-    <a href="/ironman2008.html">
-        <img src="https://cdn.marvel.com/content/1x/ironman_lob_crd_01_3.jpg">
-        <h3>Iron Man (2008)</h3>
-    </a>
-</div>
+<h2>Phase 2</h2>
 
-<div class="card">
-    <a href="/hulk2008.html">
-        <img src="https://cdn.marvel.com/content/1x/theincrediblehulk_lob_crd_03.jpg">
-        <h3>Hulk (2008)</h3>
-    </a>
-</div>
+<div class="card"><a href="/iron%20man%202013.html"><img src="https://cdn.marvel.com/content/1x/ironman3_lob_crd_01_10.jpg"><h3>Iron Man 3 (2013)</h3></a></div>
+<div class="card"><a href="/thor%202013.html"><img src="https://cdn.marvel.com/content/1x/thorthedarkworld_lob_crd_02_1.jpg"><h3>Thor: The Dark World (2013)</h3></a></div>
+<div class="card"><a href="/captian%202014.html"><img src="https://cdn.marvel.com/content/1x/captainamericathewintersoldier_lob_crd_01_1.jpg"><h3>Winter Soldier (2014)</h3></a></div>
+<div class="card"><a href="/g.html"><img src="https://cdn.marvel.com/content/1x/guardiansofthegalaxy_lob_crd_03.jpg"><h3>Guardians (2014)</h3></a></div>
+<div class="card"><a href="/av%202015.html"><img src="https://cdn.marvel.com/content/1x/avengersageofultron_lob_crd_03.jpg"><h3>Age of Ultron (2015)</h3></a></div>
+<div class="card"><a href="/antman.html"><img src="https://cdn.marvel.com/content/1x/ant-man_lob_crd_01_8.jpg"><h3>Ant-Man (2015)</h3></a></div>
 
-<div class="card">
-    <a href="/ironman2010.html">
-        <img src="https://cdn.marvel.com/content/1x/ironman2_lob_crd_01_3.jpg">
-        <h3>Iron Man 2 (2010)</h3>
-    </a>
-</div>
+<h2>Phase 3</h2>
 
-<div class="card">
-    <a href="/thor2011.html">
-        <img src="https://cdn.marvel.com/content/1x/thor_lob_crd_01.jpg">
-        <h3>Thor (2011)</h3>
-    </a>
-</div>
+<div class="card"><a href="/CA%202016.html"><img src="https://cdn.marvel.com/content/1x/captainamericacivilwar_lob_crd_01_9.jpg"><h3>Civil War (2016)</h3></a></div>
+<div class="card"><a href="/ds%202016.html"><img src="https://cdn.marvel.com/content/1x/doctorstrange_lob_crd_01_6.jpg"><h3>Doctor Strange (2016)</h3></a></div>
+<div class="card"><a href="/gaurdians%202017.html"><img src="https://cdn.marvel.com/content/1x/guardiansofthegalaxyvol.2_lob_crd_01.jpg"><h3>Guardians 2 (2017)</h3></a></div>
+<div class="card"><a href="/sm%20coming.html"><img src="https://cdn.marvel.com/content/1x/spider-manhomecoming_lob_crd_02.jpg"><h3>Homecoming (2017)</h3></a></div>
+<div class="card"><a href="/thor%202017.html"><img src="https://cdn.marvel.com/content/1x/thorragnarok_lob_crd_03.jpg"><h3>Thor Ragnarok (2017)</h3></a></div>
+<div class="card"><a href="/bp%202018.html"><img src="https://cdn.marvel.com/content/1x/blackpanther_lob_crd_01_4.jpg"><h3>Black Panther (2018)</h3></a></div>
+<div class="card"><a href="/avi.html"><img src="https://cdn.marvel.com/content/1x/avengersinfinitywar_lob_crd_02_1.jpg"><h3>Infinity War (2018)</h3></a></div>
+<div class="card"><a href="/am%20wasp%202018.html"><img src="https://cdn.marvel.com/content/1x/ant-manthewasp_lob_crd_01.jpg"><h3>Ant-Man & Wasp (2018)</h3></a></div>
+<div class="card"><a href="/cap%202019.html"><img src="https://cdn.marvel.com/content/1x/captainmarvel_lob_crd_06.jpg"><h3>Captain Marvel (2019)</h3></a></div>
+<div class="card"><a href="/aeg.html"><img src="https://cdn.marvel.com/content/1x/avengersendgame_lob_crd_05_2.jpg"><h3>Endgame (2019)</h3></a></div>
+<div class="card"><a href="/sm%20far%20from%20home%20.html"><img src="https://cdn.marvel.com/content/1x/spider-manfarfromhome_lob_crd_04_3.jpg"><h3>Far From Home (2019)</h3></a></div>
 
-<div class="card">
-    <a href="/captain2011.html">
-        <img src="https://cdn.marvel.com/content/1x/captainamerica_lob_crd_01.jpg">
-        <h3>Captain America (2011)</h3>
-    </a>
-</div>
+<h2>Phase 4 & 5</h2>
 
-<div class="card">
-    <a href="/avengers2012.html">
-        <img src="https://cdn.marvel.com/content/1x/theavengers_lob_crd_03.jpg">
-        <h3>Avengers (2012)</h3>
-    </a>
-</div>
+<div class="card"><a href="/bw2018.html"><img src="https://cdn.marvel.com/content/1x/blackwidow_lob_crd_06.jpg"><h3>Black Widow (2021)</h3></a></div>
+<div class="card"><a href="/shang%20chi.html"><img src="https://cdn.marvel.com/content/1x/shangchi_lob_crd_07.jpg"><h3>Shang-Chi (2021)</h3></a></div>
+<div class="card"><a href="/eternals.html"><img src="https://cdn.marvel.com/content/1x/eternals_lob_crd_06.jpg"><h3>Eternals (2021)</h3></a></div>
+<div class="card"><a href="/no%20way.html"><img src="https://cdn.marvel.com/content/1x/spider-mannowayhome_lob_crd_03.jpg"><h3>No Way Home (2021)</h3></a></div>
+<div class="card"><a href="/dsm.html"><img src="https://cdn.marvel.com/content/1x/doctorstrangeinthemultiverseofmadness_lob_crd_02_3.jpg"><h3>Multiverse of Madness (2022)</h3></a></div>
+<div class="card"><a href="/love%20thunder.html"><img src="https://cdn.marvel.com/content/1x/thorloveandthunder_lob_crd_04.jpg"><h3>Love & Thunder (2022)</h3></a></div>
+<div class="card"><a href="/bpwakanda.html"><img src="https://cdn.marvel.com/content/1x/blackpantherwakandaforever_lob_crd_06.jpg"><h3>Wakanda Forever (2022)</h3></a></div>
+<div class="card"><a href="/marvel2023.html"><img src="https://cdn.marvel.com/content/1x/themarvels_lob_crd_05.jpg"><h3>The Marvels (2023)</h3></a></div>
+<div class="card"><a href="/gg2023.html"><img src="https://cdn.marvel.com/content/1x/guardiansofthegalaxyvolume3_lob_crd_03.jpg"><h3>Guardians Vol 3 (2023)</h3></a></div>
+<div class="card"><a href="/antman_wasp_quantumania.html"><img src="https://cdn.marvel.com/content/1x/antmanandthewaspquantumania_lob_crd_03.jpg"><h3>Quantumania (2023)</h3></a></div>
+<div class="card"><a href="/dp3.html"><img src="https://cdn.marvel.com/content/1x/deadpoolandwolverine_lob_crd_03.jpg"><h3>Deadpool 3 (2024)</h3></a></div>
 
 </section>
 
