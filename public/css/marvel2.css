@@ -1,16 +1,9 @@
-/* ================= BACKGROUND ================= */
-.main {
-    background-image: url("https://38.media.tumblr.com/5f61bbe9322e3d56c6f2bb038bcd57e2/tumblr_nby5s456W31skiebmo1_400.gif");
-    background-size: cover;
-    height: 100vh;
-    width: 100vw;
-}
-
 /* ================= BODY ================= */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
+    overflow-x: hidden;
 }
 
 /* ================= HEADER ================= */
@@ -39,7 +32,7 @@ nav ul li a {
     color: white;
     text-decoration: none;
     font-size: 18px;
-    padding: 5px 10px;
+    padding: 6px 12px;
 }
 
 nav ul li a:hover {
@@ -53,11 +46,11 @@ nav ul li a:hover {
     justify-content: center;
     flex-wrap: wrap;
     gap: 25px;
-    padding: 30px;
+    padding: 25px;
     text-align: center;
 }
 
-/* 🔥 FIX TITLE ALIGNMENT */
+/* FIX TITLE ALIGNMENT */
 .section h1,
 .section h2 {
     width: 100%;
@@ -67,7 +60,6 @@ nav ul li a:hover {
 /* ================= CARD ================= */
 .card {
     width: 220px;
-    height: 320px;
     background-color: white;
     border-radius: 12px;
     padding: 10px;
@@ -80,11 +72,11 @@ nav ul li a:hover {
     transform: scale(1.05);
 }
 
-/* ================= IMAGE FIX (FINAL) ================= */
+/* ================= IMAGE ================= */
 .card img {
     width: 100%;
     height: 200px;
-    object-fit: contain;   /* ✅ no cropping */
+    object-fit: contain;
     background-color: #f5f5f5;
     border-radius: 10px;
 }
@@ -95,56 +87,54 @@ footer {
     color: white;
     text-align: center;
     padding: 15px;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 /* ================= TEXT ================= */
-.phase {
-    color: #005ce6;
-    text-align: center;
-    width: 100%;
-    font-size: 22px;
-}
-
 .class2 {
     color: #ffffff;
     font-size: 28px;
-    text-align: center;
-    width: 100%;
 }
 
-/* ================= HOVER ================= */
-.feature:hover {
-    transform: scale(1.1);
-}
 /* ================= MOBILE RESPONSIVE ================= */
-
 @media (max-width: 768px) {
 
-    /* NAVBAR STACK */
+    /* HEADER */
+    header h1 {
+        font-size: 20px;
+    }
+
+    /* NAVBAR COMPACT */
     nav ul {
         flex-direction: column;
-        gap: 10px;
-        text-align: center;
+        align-items: center;
+        gap: 6px;
+        padding: 8px;
     }
 
-    /* CARDS FULL WIDTH */
+    nav ul li a {
+        font-size: 14px;
+        padding: 5px;
+    }
+
+    /* SECTION */
+    .section {
+        padding: 10px;
+        gap: 15px;
+    }
+
+    /* CARD FULL WIDTH */
     .card {
-        width: 90%;
-        height: auto;
+        width: 95%;
+        margin: 10px auto;
     }
 
-    /* IMAGE ADJUST */
+    /* IMAGE */
     .card img {
         height: 180px;
     }
 
-    /* SECTION PADDING */
-    .section {
-        padding: 15px;
-    }
-
-    /* TEXT SIZE */
+    /* TEXT */
     h1 {
         font-size: 22px;
     }
@@ -152,18 +142,17 @@ footer {
     h2 {
         font-size: 20px;
     }
-
 }
 
 /* EXTRA SMALL DEVICES */
 @media (max-width: 480px) {
 
-    .card {
-        width: 95%;
+    nav ul {
+        font-size: 13px;
     }
 
-    nav ul {
-        font-size: 14px;
+    .card {
+        width: 98%;
     }
 
 }
