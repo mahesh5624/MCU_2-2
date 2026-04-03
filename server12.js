@@ -43,12 +43,33 @@ const Contact = mongoose.model("Contact", contactSchema);
 
 // ---------------- ROUTES ----------------
 
-// Home page
+// ✅ HOME
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "web2.html"));
 });
 
-// Contact form API
+// ✅ ALL PAGES (VERY IMPORTANT FIX)
+app.get("/heroes.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "heroes.html"));
+});
+
+app.get("/villains.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "villains.html"));
+});
+
+app.get("/movies.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "movies.html"));
+});
+
+app.get("/about2.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "about2.html"));
+});
+
+app.get("/contact-us.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "contact-us.html"));
+});
+
+// ✅ CONTACT API
 app.post("/contact", async (req, res) => {
   try {
     const { name, email, message } = req.body;
@@ -77,9 +98,9 @@ app.post("/contact", async (req, res) => {
   }
 });
 
-// Fallback route
+// ⚠️ KEEP THIS LAST (fallback)
 app.use((req, res) => {
-  res.sendFile(path.join(__dirname, "public", "web2.html"));
+  res.status(404).send("Page Not Found ❌");
 });
 
 // ---------------- SERVER ----------------
