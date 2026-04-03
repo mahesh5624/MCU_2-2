@@ -5,59 +5,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marvel Heroes</title>
+
     <link rel="stylesheet" href="/css/marvel2.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <style>
-        Section {
-            background-image: url("/images/heroes background.webp");
-            background-repeat: no repeat;
-            background-position: sticky;
-            background-size: 100%;
+        section {
+            background-image: url("/images/heroes_background.webp");
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 40px;
         }
 
         header {
-            background-color: RED;
+            background-color: red;
+            text-align: center;
+            padding: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        .card {
+            display: inline-block;
+            margin: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            width: 200px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
         }
     </style>
 </head>
 
 <body>
+
+    <!-- HEADER -->
     <header>
         <h1>Marvel Heroes</h1>
         <p>Meet the legendary heroes of the Marvel Universe</p>
     </header>
 
+    <!-- NAV -->
     <nav>
         <ul>
-            <li><a href="web2.html">Home</a></li>
-            <li><a href="heroes2.html">Heroes</a></li>
-            <li><a href="villians.html">Villains</a></li>
-            <li><a href="movies.html">Movies</a></li>
-            <li><a href="about2.html">About</a></li>
-            <li><a href="contact us.html">Contact us</a></li>
-
+            <li><a href="/web2.html">Home</a></li>
+            <li><a href="/heroes.html">Heroes</a></li>
+            <li><a href="/villains.html">Villains</a></li>
+            <li><a href="/movies.html">Movies</a></li>
+            <li><a href="/about2.html">About</a></li>
+            <li><a href="/contact-us.html">Contact Us</a></li>
         </ul>
     </nav>
 
-    <section id="heroes" class="section">
+    <!-- HEROES -->
+    <section>
         <h2 class="class2">Heroes</h2>
+
         <div class="card">
-            <a href="ironman.html">
-                <img src="/images/iron man.jpg" alt="Iron Man">
+            <a href="/ironman.html">
+                <img src="/images/iron_man.jpg" alt="Iron Man">
                 <h3>Iron Man</h3>
             </a>
-            <p>The genius, multitalented who has more knowledge on AI & philanthropist in a high-tech suit.</p>
+            <p>The genius philanthropist in a high-tech suit.</p>
         </div>
+
         <div class="card">
-            <a href="spiderman.html">
-                <img src="/images/spider man.jpg" alt="Spider-Man">
+            <a href="/spiderman.html">
+                <img src="/images/spider_man.jpg" alt="Spider-Man">
                 <h3>Spider-Man</h3>
             </a>
-            <p>The friendly neighbourhood superhero with spider powers.</p>
+            <p>The friendly neighbourhood superhero.</p>
         </div>
+
     </section>
+
 </body>
 
 </html>
