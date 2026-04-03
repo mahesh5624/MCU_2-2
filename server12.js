@@ -1,68 +1,48 @@
 import express from "express";
 import mongoose from "mongoose";
 import path from "path";
-import dotenv from "dotenv";
 import { fileURLToPath } from "url";
 import cors from "cors";
 
-dotenv.config();
 const app = express();
 
-// --------------------------------------------
-// Path setup
-// --------------------------------------------
+// ---------------- PATH SETUP ----------------
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// --------------------------------------------
-// Middleware
-// --------------------------------------------
+// ---------------- MIDDLEWARE ----------------
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// --------------------------------------------
-// Static files
-// --------------------------------------------
+// ---------------- STATIC FILES ----------------
 app.use(express.static(path.join(__dirname, "public")));
 
-// --------------------------------------------
-// MongoDB connection (SECURE)
-// --------------------------------------------
-const MONGO_URI = process.env.MONGO_URI;
+// ---------------- MONGODB CONNECTION ----------------
+const MONGO_URI = "mongodb+srv://admin:admin123@cluster0.vjwxtdc.mongodb.net/mcu_website?retryWrites=true&w=majority";
 
-if (!MONGO_URI) {
-  console.log("❌ MONGO_URI not found in .env");
-  process.exit(1);
-}
-
-mongoose
-  .connect(MONGO_URI)
+mongoose.connect(MONGO_URI)
   .then(() => console.log("✅ MongoDB Connected"))
-  .catch((err) => console.error("❌ MongoDB Error:", err));
+  .catch(err => console.log("❌ MongoDB Error:", err));
 
-// --------------------------------------------
-// Schema (Contact Form)
-// --------------------------------------------
+// ---------------- SCHEMA ----------------
 const contactSchema = new mongoose.Schema({
   name: String,
   email: String,
   message: String,
-  date: { type: Date, default: Date.now },
+  date: { type: Date, default: Date.now }
 });
 
 const Contact = mongoose.model("Contact", contactSchema);
 
-// --------------------------------------------
-// Routes
-// --------------------------------------------
+// ---------------- ROUTES ----------------
 
-// Home route
+// Home
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "web2.html"));
 });
 
-// Contact form
+// Contact Form API
 app.post("/contact", async (req, res) => {
   try {
     const { name, email, message } = req.body;
@@ -70,7 +50,7 @@ app.post("/contact", async (req, res) => {
     if (!name || !email || !message) {
       return res.status(400).json({
         success: false,
-        message: "All fields are required ❗",
+        message: "All fields are required ❗"
       });
     }
 
@@ -79,27 +59,24 @@ app.post("/contact", async (req, res) => {
 
     res.json({
       success: true,
-      message: "Message saved successfully ✅",
+      message: "Message saved successfully ✅"
     });
-  } catch (err) {
-    console.error(err);
+
+  } catch (error) {
+    console.error(error);
     res.status(500).json({
       success: false,
-      message: "Server error ❌",
+      message: "Server error ❌"
     });
   }
 });
 
-// --------------------------------------------
 // Fallback route
-// --------------------------------------------
 app.use((req, res) => {
   res.sendFile(path.join(__dirname, "public", "web2.html"));
 });
 
-// --------------------------------------------
-// Server
-// --------------------------------------------
+// ---------------- SERVER ----------------
 const PORT = process.env.PORT || 10000;
 
 app.listen(PORT, () => {
