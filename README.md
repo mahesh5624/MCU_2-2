@@ -54,89 +54,6 @@ The application is built using **Node.js, Express, MongoDB**, and a responsive f
 
 ---
 
-## ✨ Features
-
-- 🦸‍♂️ Heroes section with individual pages  
-- 🦹 Villains section with details  
-- 🎬 Movies section with multiple MCU phases  
-- 📩 Contact form (data stored in database)  
-- 🌐 Multi-page navigation system  
-- 🎨 Responsive and clean UI design  
-- 🚀 Deployed on cloud (Render)  
-
----
-
-## 🛠️ Tech Stack
-
-**Frontend:**
-- HTML5  
-- CSS3  
-
-**Backend:**
-- Node.js  
-- Express.js  
-
-**Database:**
-- MongoDB Atlas  
-
-**Deployment:**
-- Render  
-
----
-
-## 🏗️ Architecture
-# 🚀 Marvel Cinematic Universe Website
-
-## 📌 Description
-This project is a full-stack web application that showcases the **Marvel Cinematic Universe (MCU)**.  
-It provides information about heroes, villains, and movies, along with a contact form for user interaction.
-
-The application is built using **Node.js, Express, MongoDB**, and a responsive frontend using HTML & CSS.
-
----
-
-## ✨ Features
-
-- 🦸‍♂️ Heroes section with individual pages  
-- 🦹 Villains section with details  
-- 🎬 Movies section with multiple MCU phases  
-- 📩 Contact form (data stored in database)  
-- 🌐 Multi-page navigation system  
-- 🎨 Responsive and clean UI design  
-- 🚀 Deployed on cloud (Render)  
-
----
-
-## 🛠️ Tech Stack
-
-**Frontend:**
-- HTML5  
-- CSS3  
-
-**Backend:**
-- Node.js  
-- Express.js  
-
-**Database:**
-- MongoDB Atlas  
-
-**Deployment:**
-- Render  
-
----
-
-## 🏗️ Architecture
-User (Browser)
-↓
-Frontend (HTML + CSS)
-↓
-Backend (Express Server)
-↓
-MongoDB Database
-
-
----
-
 ## ⚙️ How It Works
 
 1. User opens the website  
@@ -149,24 +66,9 @@ MongoDB Database
 
 ---
 
-## 📁 Project Structure
-
----
-
-## ⚙️ How It Works
-
-1. User opens the website  
-2. Navigates through pages (Home, Heroes, Villains, Movies)  
-3. Clicks on cards → opens detailed pages  
-4. Fills Contact Form  
-5. Backend (Express) receives request  
-6. Data stored in MongoDB  
-7. Success message shown to user  
-
----
 
 ## 📁 Project Structure
-project-root/
+project-root/''
 │
 ├── public/
 │ ├── css/
