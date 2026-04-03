@@ -117,3 +117,53 @@ footer {
 .feature:hover {
     transform: scale(1.1);
 }
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+    /* NAVBAR STACK */
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    /* CARDS FULL WIDTH */
+    .card {
+        width: 90%;
+        height: auto;
+    }
+
+    /* IMAGE ADJUST */
+    .card img {
+        height: 180px;
+    }
+
+    /* SECTION PADDING */
+    .section {
+        padding: 15px;
+    }
+
+    /* TEXT SIZE */
+    h1 {
+        font-size: 22px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+}
+
+/* EXTRA SMALL DEVICES */
+@media (max-width: 480px) {
+
+    .card {
+        width: 95%;
+    }
+
+    nav ul {
+        font-size: 14px;
+    }
+
+}
