@@ -3,24 +3,23 @@ import mongoose from "mongoose";
 import path from "path";
 import dotenv from "dotenv";
 import { fileURLToPath } from "url";
-import bodyParser from "body-parser";
 import cors from "cors";
 
 dotenv.config();
 const app = express();
 
 // --------------------------------------------
-// Middleware
-// --------------------------------------------
-app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-// --------------------------------------------
 // Path setup
 // --------------------------------------------
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// --------------------------------------------
+// Middleware (no need bodyParser ❌)
+// --------------------------------------------
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // --------------------------------------------
 // Static files
@@ -35,12 +34,12 @@ const MONGO_URI =
   "mongodb+srv://maheshkorra220418_db_user:mahesh5624@cluster0.qy27dgh.mongodb.net/mcu2-2?retryWrites=true&w=majority";
 
 mongoose
-  .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("✅ Connected to MongoDB Atlas"))
-  .catch((err) => console.error("❌ MongoDB Connection Error:", err));
+  .connect(MONGO_URI)
+  .then(() => console.log("✅ MongoDB Connected"))
+  .catch((err) => console.error("❌ MongoDB Error:", err));
 
 // --------------------------------------------
-// Schema example (optional contact form)
+// Schema (Contact Form)
 // --------------------------------------------
 const contactSchema = new mongoose.Schema({
   name: String,
@@ -54,28 +53,45 @@ const Contact = mongoose.model("Contact", contactSchema);
 // --------------------------------------------
 // Routes
 // --------------------------------------------
+
+// Home
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "web2.html"));
 });
 
+// Contact form
 app.post("/contact", async (req, res) => {
   try {
     const { name, email, message } = req.body;
+
+    if (!name || !email || !message) {
+      return res.status(400).json({
+        success: false,
+        message: "All fields required",
+      });
+    }
+
     const newContact = new Contact({ name, email, message });
     await newContact.save();
-    res.status(200).json({ success: true, message: "Message saved!" });
+
+    res.json({ success: true, message: "Message saved ✅" });
   } catch (err) {
-    res.status(500).json({ success: false, message: "Error saving message" });
+    res.status(500).json({ success: false, message: "Server error ❌" });
   }
 });
 
-// ✅ Fallback route (for any unmatched path)
+// --------------------------------------------
+// Fallback route (IMPORTANT)
+// --------------------------------------------
 app.use((req, res) => {
   res.sendFile(path.join(__dirname, "public", "web2.html"));
 });
 
 // --------------------------------------------
-// Start server
+// Server
 // --------------------------------------------
 const PORT = process.env.PORT || 10000;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});
