@@ -15,7 +15,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // --------------------------------------------
-// Middleware (no need bodyParser ❌)
+// Middleware
 // --------------------------------------------
 app.use(cors());
 app.use(express.json());
@@ -27,11 +27,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 // --------------------------------------------
-// MongoDB connection
+// MongoDB connection (SECURE)
 // --------------------------------------------
-const MONGO_URI =
-  process.env.MONGO_URI ||
-  "mongodb+srv://maheshkorra220418_db_user:mahesh5624@cluster0.qy27dgh.mongodb.net/mcu2-2?retryWrites=true&w=majority";
+const MONGO_URI = process.env.MONGO_URI;
+
+if (!MONGO_URI) {
+  console.log("❌ MONGO_URI not found in .env");
+  process.exit(1);
+}
 
 mongoose
   .connect(MONGO_URI)
@@ -54,7 +57,7 @@ const Contact = mongoose.model("Contact", contactSchema);
 // Routes
 // --------------------------------------------
 
-// Home
+// Home route
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "web2.html"));
 });
@@ -67,21 +70,28 @@ app.post("/contact", async (req, res) => {
     if (!name || !email || !message) {
       return res.status(400).json({
         success: false,
-        message: "All fields required",
+        message: "All fields are required ❗",
       });
     }
 
     const newContact = new Contact({ name, email, message });
     await newContact.save();
 
-    res.json({ success: true, message: "Message saved ✅" });
+    res.json({
+      success: true,
+      message: "Message saved successfully ✅",
+    });
   } catch (err) {
-    res.status(500).json({ success: false, message: "Server error ❌" });
+    console.error(err);
+    res.status(500).json({
+      success: false,
+      message: "Server error ❌",
+    });
   }
 });
 
 // --------------------------------------------
-// Fallback route (IMPORTANT)
+// Fallback route
 // --------------------------------------------
 app.use((req, res) => {
   res.sendFile(path.join(__dirname, "public", "web2.html"));
