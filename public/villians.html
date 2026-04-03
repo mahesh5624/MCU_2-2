@@ -4,56 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marvel Villains</title>
-    <link rel="stylesheet" href="/css/marvel2.css"> 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/css/marvel2.css">
+
     <style>
-        Section{
-            background-image: url("/images/villians background.webp");
-            background-repeat: no repeat;
-            background-position:sticky;
-            background-size:100%;
-        
+        section {
+            background-image: url("/images/villains_background.webp");
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 40px;
         }
-        header{
-            background-color:RED;
-            }
+
+        header {
+            background-color: red;
+            text-align: center;
+            padding: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        .card {
+            display: inline-block;
+            margin: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            width: 200px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
     </style>
 </head>
+
 <body>
+
+    <!-- HEADER -->
     <header>
         <h1>Marvel Villains</h1>
-        <p>Discover the most dangerous and powerful villains in the Marvel Universe</p>
+        <p>Discover the most dangerous villains in the Marvel Universe</p>
     </header>
 
+    <!-- NAV -->
     <nav>
         <ul>
-            <li><a href="web2.html">Home</a></li>
-            <li><a href="heroes.html">Heroes</a></li>
-            <li><a href="villians.html">Villains</a></li>
-            <li><a href="movies.html">Movies</a></li>
-            <li><a href="about2.html">About</a></li>
-            <li><a href="contact us.html">Contact us</a></li>
+            <li><a href="/web2.html">Home</a></li>
+            <li><a href="/heroes.html">Heroes</a></li>
+            <li><a href="/villains.html">Villains</a></li>
+            <li><a href="/movies.html">Movies</a></li>
+            <li><a href="/about2.html">About</a></li>
+            <li><a href="/contact-us.html">Contact Us</a></li>
         </ul>
     </nav>
 
-    <section id="villains" class="section">
+    <!-- VILLAINS -->
+    <section>
         <h2 class="class2">Villains</h2>
+
         <div class="card">
-            <a href="Thonas.html">
+            <a href="/thonas.html">
                 <img src="/images/thonas2.webp" alt="Thanos">
                 <h3>Thanos</h3>
             </a>
-            <p>The Mad villain who is trying to collapse the world and he is trying to control.</p>
+            <p>The Mad Titan who seeks control over the universe.</p>
         </div>
+
         <div class="card">
-            <a href="loki.html">
+            <a href="/loki.html">
                 <img src="/images/loki2.jpg" alt="Loki">
                 <h3>Loki</h3>
             </a>
-            <p>The God of Mischief,who has super powers.</p>
+            <p>The God of Mischief with powerful magic.</p>
         </div>
+
     </section>
+
 </body>
 </html>
