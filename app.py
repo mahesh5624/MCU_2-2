@@ -53,16 +53,6 @@ app.get("/index.html", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-// ---------------- LOGIN / SIGNUP ----------------
-
-app.get("/login.html", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "login.html"));
-});
-
-app.get("/signup.html", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "signup.html"));
-});
-
 // ---------------- HEROES ----------------
 
 app.get("/ironman.html", (req, res) => {
@@ -109,8 +99,6 @@ app.get("/thor_2017.html", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "thor_2017.html"));
 });
 
-// (You can continue same pattern if needed)
-
 // ---------------- CONTACT FORM ----------------
 
 app.post("/submit_form", (req, res) => {
@@ -122,8 +110,6 @@ app.post("/submit_form", (req, res) => {
       message: "All fields are required.",
     });
   }
-
-  // Later you can connect MongoDB here
 
   return res.json({
     success: true,
