@@ -1,11 +1,10 @@
 {
   "name": "mcu-project",
   "version": "1.0.0",
-  "description": "MCU Website with Express and MongoDB",
   "type": "module",
-  "main": "app.js",
+  "main": "server12.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node server12.js"
   },
   "dependencies": {
     "express": "^4.18.2",
